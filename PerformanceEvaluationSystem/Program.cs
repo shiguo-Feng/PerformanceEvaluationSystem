@@ -16,7 +16,8 @@ namespace PerformanceEvaluationSystem
         [STAThread]
         static void Main()
         {
-            SqlHelper.ConStr = ConfigurationManager.
+            SqlHelper.ConStr = ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString;
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new mainForm());
