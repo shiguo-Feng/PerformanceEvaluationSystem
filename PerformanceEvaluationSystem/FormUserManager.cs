@@ -26,10 +26,35 @@ namespace PerformanceEvaluationSystem
 
         private void FormUserManager_Load(object sender, EventArgs e)
         {
+            BindCbx();
+            BindDataGView();
+
+        }
+
+        private void BindDataGView()
+        {
+            string userName = txtUserName.Text.Trim();
+            int baseTypeId = (int)comboBoxBase.SelectedValue;
+            bool isSuspended = checkBox1.Checked;
+            List<UserAppraisalBases> userAppraisalBases = UserAppraisalBases.ListAll();
+            if (baseTypeId == 0)
+            {
+                //Select ALL
+                dataGridView1.DataSource = userAppraisalBases.FindAll(m => m.UserName.Contains(userName) && m.suspended == isSuspended);
+            }
+            else
+            {
+                //Search with conditon
+                dataGridView1.DataSource = userAppraisalBases.FindAll(m => m.UserName.Contains(userName) && m.BaseTypeId == baseTypeId && m.suspended == isSuspended);
+            }
+        }
+
+        private void BindCbx()
+        {
             List<AppraisalBases> appraisalBasesList = new List<AppraisalBases>();
             appraisalBasesList = AppraisalBases.ListAll();
-            appraisalBasesList.Insert(0, new AppraisalBases 
-            { 
+            appraisalBasesList.Insert(0, new AppraisalBases
+            {
                 Id = 0,
                 BaseType = "--Select ALL--",
                 AppraisalBase = 0,
@@ -39,6 +64,11 @@ namespace PerformanceEvaluationSystem
             comboBoxBase.DataSource = appraisalBasesList;
             comboBoxBase.DisplayMember = "BaseType";
             comboBoxBase.ValueMember = "Id";
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindDataGView();
         }
     }
 }
