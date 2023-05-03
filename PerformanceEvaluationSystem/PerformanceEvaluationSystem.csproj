@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormSetUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSetUser.Designer.cs">
+      <DependentUpon>FormSetUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUserManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,11 +65,11 @@
     <Compile Include="mainForm.Designer.cs">
       <DependentUpon>mainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\AppraisalBases.cs" />
-    <Compile Include="Models\UserAppraisalBases.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\SqlHelper.cs" />
+    <EmbeddedResource Include="FormSetUser.resx">
+      <DependentUpon>FormSetUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormUserManager.resx">
       <DependentUpon>FormUserManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +98,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PerformanceEvaluationSystem.Utility\PerformanceEvaluationSystem.Utility.csproj">
+      <Project>{bd59f787-94d1-4319-8ea4-94b16c4af8da}</Project>
+      <Name>PerformanceEvaluationSystem.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Models\PerformanceEvaluationSystem.Models.csproj">
+      <Project>{c2b14646-0618-467d-b9d2-71871d6fdbbe}</Project>
+      <Name>PerformanceEvaluationSystem.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

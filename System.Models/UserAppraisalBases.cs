@@ -16,7 +16,7 @@ namespace PerformanceEvaluationSystem.Models
         public int BaseTypeId { get; set; }
         public string BaseType { get; set; }
         public int AppraisalBase { get; set; }
-        public bool suspended { get; set; }
+        public bool Suspended { get; set; }
 
         public static List<UserAppraisalBases> ListAll()
         {
@@ -37,7 +37,7 @@ namespace PerformanceEvaluationSystem.Models
             userAppraisalBase.BaseTypeId = (int)row["BaseTypeId"];
             userAppraisalBase.BaseType = (string)row["BaseType"];
             userAppraisalBase.AppraisalBase = (int)row["AppraisalBase"];
-            userAppraisalBase.suspended = (bool)row["IsDel"];
+            userAppraisalBase.Suspended = (bool)row["IsDel"];
             return userAppraisalBase;
         }
 

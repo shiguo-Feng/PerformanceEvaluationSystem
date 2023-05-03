@@ -24,6 +24,15 @@ namespace PerformanceEvaluationSystem
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            //Clear for each
+            foreach(TreeNode node in treeView1.Nodes)
+            {
+                node.BackColor = Color.White;
+                node.ForeColor = Color.Black;
+            }
+            //Display highlight
+            e.Node.BackColor = SystemColors.Highlight;
+            e.Node.ForeColor = Color.White;
 
         }
 

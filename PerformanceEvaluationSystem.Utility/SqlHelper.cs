@@ -12,7 +12,7 @@ namespace PerformanceEvaluationSystem.Utility
     {
         public static string ConStr { get; set; }
 
-        public static DataTable ExecuteTable(String cmdText) {
+        public static DataTable ExecuteTable(string cmdText) {
             using (SqlConnection conn = new SqlConnection(ConStr))
             {
                 conn.Open();
@@ -24,11 +24,12 @@ namespace PerformanceEvaluationSystem.Utility
             }
         }
 
-        public static int ExecuteNonQuery(String cmdText) {
+        public static int ExecuteNonQuery(string cmdText, params SqlParameter[] sqlParameters) {
             using (SqlConnection conn = new SqlConnection(ConStr))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.Parameters.AddRange(sqlParameters);
                 int rows = cmd.ExecuteNonQuery();
                 if (rows <= 0) {
                     throw new Exception("Eror in Executing NonQuery");

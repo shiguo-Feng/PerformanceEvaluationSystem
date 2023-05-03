@@ -40,12 +40,12 @@ namespace PerformanceEvaluationSystem
             if (baseTypeId == 0)
             {
                 //Select ALL
-                dataGridView1.DataSource = userAppraisalBases.FindAll(m => m.UserName.Contains(userName) && m.suspended == isSuspended);
+                dataGridView1.DataSource = userAppraisalBases.FindAll(m => m.UserName.Contains(userName) && m.Suspended == isSuspended);
             }
             else
             {
                 //Search with conditon
-                dataGridView1.DataSource = userAppraisalBases.FindAll(m => m.UserName.Contains(userName) && m.BaseTypeId == baseTypeId && m.suspended == isSuspended);
+                dataGridView1.DataSource = userAppraisalBases.FindAll(m => m.UserName.Contains(userName) && m.BaseTypeId == baseTypeId && m.Suspended == isSuspended);
             }
         }
 
@@ -69,6 +69,47 @@ namespace PerformanceEvaluationSystem
         private void btnSearch_Click(object sender, EventArgs e)
         {
             BindDataGView();
+        }
+
+        private void toolStripMenuAdd_Click(object sender, EventArgs e)
+        {
+           FormSetUser formSetUser = new FormSetUser();
+           formSetUser.ShowDialog();
+        }
+
+        private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) 
+            {
+                // only display Add when clicking on anywhere
+                toolStripMenuAdd.Visible = true;
+                toolStripMenuEdit.Visible = false;
+                toolStripMenuReturn.Visible = false;
+                toolStripMenuSuspend.Visible = false;
+            }
+        }
+
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.RowIndex > -1) 
+                {
+                    dataGridView1.Rows[e.RowIndex].Selected = true;
+                    toolStripMenuAdd.Visible = true;
+                    toolStripMenuEdit.Visible = true;
+                    bool isSuspend = (bool)dataGridView1.Rows[e.RowIndex].Cells["Suspended"].Value;
+                    if (isSuspend)
+                    {
+                        toolStripMenuReturn.Visible = true;
+                    }
+                    else
+                    {
+                        toolStripMenuSuspend.Visible = true;
+                    }
+                }
+
+            }
         }
     }
 }
