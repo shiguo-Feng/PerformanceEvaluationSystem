@@ -33,7 +33,23 @@ namespace PerformanceEvaluationSystem
             //Display highlight
             e.Node.BackColor = SystemColors.Highlight;
             e.Node.ForeColor = Color.White;
-
+            switch (e.Node.Index) 
+            {
+                case 0:
+                    FormUserManager formUserManager = new FormUserManager();
+                    formUserManager.MdiParent = this;
+                    formUserManager.Parent = splitContainer1.Panel2;
+                    formUserManager.Show();
+                    break;
+                case 1:
+                    FormBaseManager formBaseManager = new FormBaseManager();
+                    formBaseManager.MdiParent = this;
+                    formBaseManager.Parent = splitContainer1.Panel2;
+                    formBaseManager.Show();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)

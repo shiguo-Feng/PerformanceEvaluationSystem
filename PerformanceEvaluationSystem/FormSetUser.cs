@@ -9,19 +9,23 @@ using System.Models;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PerformanceEvaluationSystem
 {
     public partial class FormSetUser : Form
     {
-        public FormSetUser()
+        private BindDataGViewDelegate _bindDataGViewDelegate;
+        private Users _user;
+        public FormSetUser(BindDataGViewDelegate bindDataGViewDelegate)
         {
             InitializeComponent();
+            _bindDataGViewDelegate = bindDataGViewDelegate;
         }
-
-        private void label3_Click(object sender, EventArgs e)
+        public FormSetUser(BindDataGViewDelegate bindDataGViewDelegate, int userId):this(bindDataGViewDelegate)
         {
-
+            // Used formSetUser with one input first method first
+            _user = Users.ListAll().Find(m => m.Id == userId);
         }
 
         private void FormSetUser_Load(object sender, EventArgs e)
@@ -31,6 +35,13 @@ namespace PerformanceEvaluationSystem
             comboBoxPosition.DataSource = appraisalBasesList;
             comboBoxPosition.DisplayMember = "BaseType";
             comboBoxPosition.ValueMember = "Id";
+
+
+            // update the selected user if updating
+            textBoxUserName.Text = _user.UserName;
+            comboBoxPosition.SelectedValue = _user.BaseTypeId;
+            comboBoxSex.Text = _user.Sex;
+            checkBoxIsSuspend.Checked = _user.IsDel;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -39,15 +50,31 @@ namespace PerformanceEvaluationSystem
             int baseTypeId = (int)comboBoxPosition.SelectedValue;
             string sex = comboBoxSex.Text;
             bool isSuspend = checkBoxIsSuspend.Checked;
-            Users user = new Users
+            if (_user == null)
             {
-                UserName = userName,
-                BaseTypeId = baseTypeId,
-                Password = "111",
-                Sex = sex,
-                IsDel = isSuspend
-            };
-            Users.CreateNew(user);
+                Users user = new Users
+                {
+                    UserName = userName,
+                    BaseTypeId = baseTypeId,
+                    Password = "111",
+                    Sex = sex,
+                    IsDel = isSuspend
+                };
+                Users.CreateNew(user);
+                MessageBox.Show("Successfully added user!");
+            }
+            else
+            {
+                _user.UserName = userName;
+                _user.BaseTypeId = baseTypeId;
+                _user.Password = "111";
+                _user.Sex = sex;
+                _user.IsDel = isSuspend;
+                Users.Update(_user);
+                MessageBox.Show("Successfully Edited user!");
+            }
+            _bindDataGViewDelegate();
+            this.Close();
         }
     }
 }

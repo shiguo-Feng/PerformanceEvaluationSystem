@@ -12,23 +12,22 @@ using System.Windows.Forms;
 
 namespace PerformanceEvaluationSystem
 {
+    public delegate void BindDataGViewDelegate();
     public partial class FormUserManager : Form
     {
+        BindDataGViewDelegate bindDataViewDelegate; 
+
         public FormUserManager()
         {
             InitializeComponent();
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void FormUserManager_Load(object sender, EventArgs e)
         {
             BindCbx();
             BindDataGView();
-
+            dataGridView1.AutoGenerateColumns = false;
+            bindDataViewDelegate = BindDataGView;
         }
 
         private void BindDataGView()
@@ -51,6 +50,7 @@ namespace PerformanceEvaluationSystem
 
         private void BindCbx()
         {
+            
             List<AppraisalBases> appraisalBasesList = new List<AppraisalBases>();
             appraisalBasesList = AppraisalBases.ListAll();
             appraisalBasesList.Insert(0, new AppraisalBases
@@ -73,10 +73,16 @@ namespace PerformanceEvaluationSystem
 
         private void toolStripMenuAdd_Click(object sender, EventArgs e)
         {
-           FormSetUser formSetUser = new FormSetUser();
+           FormSetUser formSetUser = new FormSetUser(bindDataViewDelegate);
            formSetUser.ShowDialog();
+           //BindDataGView();
         }
-
+        private void toolStripMenuEdit_Click(object sender, EventArgs e)
+        {
+            int userId = (int)dataGridView1.SelectedRows[0].Cells["Id"].Value;
+            FormSetUser formSetUser = new FormSetUser(bindDataViewDelegate, userId);
+            formSetUser.ShowDialog();
+        }
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right) 
@@ -111,5 +117,7 @@ namespace PerformanceEvaluationSystem
 
             }
         }
+
+
     }
 }

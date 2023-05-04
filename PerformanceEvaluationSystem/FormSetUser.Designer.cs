@@ -88,7 +88,6 @@
             this.label3.Size = new System.Drawing.Size(59, 12);
             this.label3.TabIndex = 4;
             this.label3.Text = "User Name";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // comboBoxPosition
             // 
