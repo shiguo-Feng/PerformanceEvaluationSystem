@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PerformanceEvaluationSystem.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,23 +34,10 @@ namespace PerformanceEvaluationSystem
             //Display highlight
             e.Node.BackColor = SystemColors.Highlight;
             e.Node.ForeColor = Color.White;
-            switch (e.Node.Index) 
-            {
-                case 0:
-                    FormUserManager formUserManager = new FormUserManager();
-                    formUserManager.MdiParent = this;
-                    formUserManager.Parent = splitContainer1.Panel2;
-                    formUserManager.Show();
-                    break;
-                case 1:
-                    FormBaseManager formBaseManager = new FormBaseManager();
-                    formBaseManager.MdiParent = this;
-                    formBaseManager.Parent = splitContainer1.Panel2;
-                    formBaseManager.Show();
-                    break;
-                default:
-                    break;
-            }
+            Form form = FormFactory.CreateForm(e.Node.Index);
+            form.MdiParent = this;
+            form.Parent= splitContainer1.Panel2;
+            form.Show();
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
@@ -59,10 +47,10 @@ namespace PerformanceEvaluationSystem
 
         private void mainForm_Load_1(object sender, EventArgs e)
         {
-            FormUserManager formUserManager = new FormUserManager();
-            formUserManager.MdiParent = this;
-            formUserManager.Parent = splitContainer1.Panel2;
-            formUserManager.Show();
+            Form form = FormFactory.CreateForm(0);
+            form.MdiParent = this;
+            form.Parent = splitContainer1.Panel2;
+            form.Show();
         }
     }
 }
