@@ -12,8 +12,9 @@ namespace PerformanceEvaluationSystem.Common
     {
         //private static FormBaseManager formBaseManager;
         //private static FormUserManager formUserManager;
-        private static Form form;
-        private static List<Form> forms = new List<Form>();
+        //private static Form form;
+        private static List<Type> _types;
+        private static List<Form> _forms = new List<Form>();
         //public static Form CreateForm(int index)
         //{
         //    HideForm();
@@ -42,26 +43,29 @@ namespace PerformanceEvaluationSystem.Common
 
         //    return form;
         //}
+
+        static FormFactory()
+        {
+            Assembly app = Assembly.LoadFrom("PerformanceEvaluationSystem.exe");
+            _types = app.GetTypes().ToList();
+        }
         public static Form CreateForm(string formName)
         {
 
-            Assembly app = Assembly.LoadFrom("PerformanceEvaluationSystem.exe");
-            List<Type> types = app.GetTypes().ToList();
-
-            Form form = forms.Find(m => m.Name == formName);
+            Form form = _forms.Find(m => m.Name == formName);
             HideAll();
             if (form == null)
             { // Create new instanse if it does not existed
-                Type type = types.Find(m =>  m.Name == formName);
+                Type type = _types.Find(m =>  m.Name == formName);
                 form = (Form)Activator.CreateInstance(type);
-                forms.Add(form);
+                _forms.Add(form);
             }
             
             return form;
         }
         public static void HideAll()
         {
-           foreach(var form in forms)
+           foreach(var form in _forms)
             {
                 form.Hide();
             }

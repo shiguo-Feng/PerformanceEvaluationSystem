@@ -34,8 +34,10 @@
             // 
             // dataGridViewBase
             // 
+            this.dataGridViewBase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewBase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewBase.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewBase.Name = "dataGridViewBase";
             this.dataGridViewBase.RowTemplate.Height = 23;
