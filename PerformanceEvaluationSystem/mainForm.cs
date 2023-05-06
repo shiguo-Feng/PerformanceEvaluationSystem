@@ -34,7 +34,7 @@ namespace PerformanceEvaluationSystem
             //Display highlight
             e.Node.BackColor = SystemColors.Highlight;
             e.Node.ForeColor = Color.White;
-            Form form = FormFactory.CreateForm(e.Node.Index);
+            Form form = FormFactory.CreateForm(e.Node.Tag.ToString());
             form.MdiParent = this;
             form.Parent= splitContainer1.Panel2;
             form.Show();
@@ -47,7 +47,7 @@ namespace PerformanceEvaluationSystem
 
         private void mainForm_Load_1(object sender, EventArgs e)
         {
-            Form form = FormFactory.CreateForm(0);
+            Form form = FormFactory.CreateForm("FormUserManager");
             form.MdiParent = this;
             form.Parent = splitContainer1.Panel2;
             form.Show();

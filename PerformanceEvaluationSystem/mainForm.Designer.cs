@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("User Management");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Base management");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Coefficient");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Appraisal");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("User Management");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Base management");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Coefficient");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Appraisal");
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -61,19 +61,23 @@
             this.treeView1.ItemHeight = 40;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode9.Name = "tnUser";
-            treeNode9.Text = "User Management";
-            treeNode10.Name = "tnBase";
-            treeNode10.Text = "Base management";
-            treeNode11.Name = "tnCoefficient";
-            treeNode11.Text = "Coefficient";
-            treeNode12.Name = "tnAppraisal";
-            treeNode12.Text = "Appraisal";
+            treeNode1.Name = "tnUser";
+            treeNode1.Tag = "FormUserManager";
+            treeNode1.Text = "User Management";
+            treeNode2.Name = "tnBase";
+            treeNode2.Tag = "FormBaseManager";
+            treeNode2.Text = "Base management";
+            treeNode3.Name = "tnCoefficient";
+            treeNode3.Tag = "FormCoefficientManager";
+            treeNode3.Text = "Coefficient";
+            treeNode4.Name = "tnAppraisal";
+            treeNode4.Tag = "FormUserAppraisal";
+            treeNode4.Text = "Appraisal";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11,
-            treeNode12});
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(266, 450);
             this.treeView1.TabIndex = 0;
