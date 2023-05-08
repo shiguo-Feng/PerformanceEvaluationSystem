@@ -14,7 +14,7 @@ namespace System.Models
         public string AppraisalType { get; set; }
         public double AppraisalCoefficient { get; set; }
         public int CalculationMethod { get; set; }
-        public int IsDel { get; set; }
+        public bool IsDel { get; set; }
 
         public static List<AppraisalCoefficients> ListAll()
         {
