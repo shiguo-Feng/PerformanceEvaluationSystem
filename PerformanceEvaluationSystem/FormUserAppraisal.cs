@@ -41,7 +41,8 @@ namespace PerformanceEvaluationSystem
             {
                 //Get the matched id and year group
                 var filter =  userAppraisalCoefficients.FindAll(m => m.UserId == (int)dt.Rows[i]["Id"] && m.AssessmentYear == Convert.ToInt32(comboBoxYear.Text));
-
+                //Array to stroe all coeffiecients * count * calculation method
+                double[] coes = new double[filter.Count];
                 for(int j = 0; j < filter.Count; j++)
                 {
                     // AppraisalType
@@ -61,9 +62,20 @@ namespace PerformanceEvaluationSystem
                     dt.Rows[i][appraisalCoefficientKey] = appraisalCoefficientValue;
                     dt.Rows[i][calculationMethodKey] = calculationMethodValue;
 
+                    coes[j] = appraisalTypeCountValue * appraisalCoefficientValue * calculationMethodValue;
                 }
+                dt.Rows[i]["AssessmentYear"] = comboBoxYear.Text;
+
+                //Yearbonus
+                double coesSum = coes.Sum();
+                double yearBonus = (1 + coesSum) * Convert.ToDouble(dt.Rows[i]["AppraisalBase"]);
+
+                dt.Rows[i]["YearBonus"] = yearBonus < 0 ? 0 : yearBonus;
+
             }
 
+            dataGViewUserAppraisal.AutoGenerateColumns = false;
+            dataGViewUserAppraisal.DataSource = dt;
         }
 
         private void SetCol()
