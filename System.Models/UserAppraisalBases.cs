@@ -18,10 +18,16 @@ namespace PerformanceEvaluationSystem.Models
         public int AppraisalBase { get; set; }
         public bool Suspended { get; set; }
 
+        public static DataTable GetDataTable()
+        {
+            DataTable dataTable = SqlHelper.ExecuteTable("SELECT u.Id, u.UserName,u.Sex, u.BaseTypeId, u.IsDel, a.AppraisalBase, a.BaseType FROM UsersIdTable u LEFT JOIN AppraisalBases a ON u.BaseTypeId = a.Id");
+            return dataTable;
+        }
         public static List<UserAppraisalBases> ListAll()
         {
             List<UserAppraisalBases> list = new List<UserAppraisalBases>();
-            DataTable dataTable = SqlHelper.ExecuteTable("SELECT u.Id, u.UserName,u.Sex, u.BaseTypeId, u.IsDel, a.AppraisalBase, a.BaseType FROM UsersIdTable u LEFT JOIN AppraisalBases a ON u.BaseTypeId = a.Id");
+            //DataTable dataTable = SqlHelper.ExecuteTable("SELECT u.Id, u.UserName,u.Sex, u.BaseTypeId, u.IsDel, a.AppraisalBase, a.BaseType FROM UsersIdTable u LEFT JOIN AppraisalBases a ON u.BaseTypeId = a.Id");
+            DataTable dataTable = GetDataTable();
             foreach (DataRow row in dataTable.Rows)
             {
                 list.Add(SqltoObj(row));
