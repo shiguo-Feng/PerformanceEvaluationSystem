@@ -54,6 +54,12 @@
     <Compile Include="FormBaseManager.Designer.cs">
       <DependentUpon>FormBaseManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCoefficientManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCoefficientManager.Designer.cs">
+      <DependentUpon>FormCoefficientManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSetUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormBaseManager.resx">
       <DependentUpon>FormBaseManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCoefficientManager.resx">
+      <DependentUpon>FormCoefficientManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSetUser.resx">
       <DependentUpon>FormSetUser.cs</DependentUpon>

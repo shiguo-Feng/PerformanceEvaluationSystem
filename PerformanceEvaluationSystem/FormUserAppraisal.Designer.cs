@@ -57,7 +57,6 @@
             this.groupBox1.Size = new System.Drawing.Size(776, 100);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // comboBoxYear
             // 
@@ -144,12 +143,12 @@
             this.contextMenuStripUserAppraisal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmsEdit});
             this.contextMenuStripUserAppraisal.Name = "contextMenuStripUserAppraisal";
-            this.contextMenuStripUserAppraisal.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStripUserAppraisal.Size = new System.Drawing.Size(99, 26);
             // 
             // cmsEdit
             // 
             this.cmsEdit.Name = "cmsEdit";
-            this.cmsEdit.Size = new System.Drawing.Size(180, 22);
+            this.cmsEdit.Size = new System.Drawing.Size(98, 22);
             this.cmsEdit.Text = "Edit";
             this.cmsEdit.Click += new System.EventHandler(this.cmsEdit_Click);
             // 

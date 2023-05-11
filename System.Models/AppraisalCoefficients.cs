@@ -1,7 +1,9 @@
-﻿using PerformanceEvaluationSystem.Utility;
+﻿using PerformanceEvaluationSystem.Models;
+using PerformanceEvaluationSystem.Utility;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,17 @@ namespace System.Models
                 appraisalCoefficientsL.Add(dr.DataRowToModel<AppraisalCoefficients>());
             }
             return appraisalCoefficientsL;
+        }
+
+        public static int Update(AppraisalCoefficients appraisalCoefficient)
+        {
+            return SqlHelper.ExecuteNonQuery("UPDATE AppraisalCoefficients SET  AppraisalType = @AppraisalType, AppraisalCoefficient = @AppraisalCoefficient,CalculationMethod = @CalculationMethod, IsDel = @Isdel Where Id = @Id",
+                new SqlParameter("@Id", appraisalCoefficient.Id),
+                new SqlParameter("@AppraisalType", appraisalCoefficient.AppraisalType),
+                new SqlParameter("@AppraisalCoefficient", appraisalCoefficient.AppraisalCoefficient),
+                new SqlParameter("@CalculationMethod", appraisalCoefficient.CalculationMethod),
+                new SqlParameter("@IsDel", appraisalCoefficient.IsDel)
+                );
         }
     }
 }

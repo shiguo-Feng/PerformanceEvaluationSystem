@@ -45,7 +45,7 @@
             this.groupBox1.Size = new System.Drawing.Size(679, 233);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Invalid input = 0";
             // 
             // flpUserAppraisalEdit
             // 
@@ -64,7 +64,6 @@
             this.groupBox2.Size = new System.Drawing.Size(679, 80);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
             // 
             // buttonSave
             // 

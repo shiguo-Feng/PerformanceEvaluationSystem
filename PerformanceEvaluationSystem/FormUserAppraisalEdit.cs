@@ -100,7 +100,19 @@ namespace PerformanceEvaluationSystem
                         if (panelControl is TextBox)
                         {
                             int coeId = Convert.ToInt32(((TextBox)panelControl).Name.Split('_')[1]);
-                            double count = Convert.ToDouble(((TextBox)panelControl).Text);
+                            // double count = Convert.ToDouble(((TextBox)panelControl).Text);
+                            double count;
+                            string inputText = ((TextBox)panelControl).Text;
+
+                            try
+                            {
+                                count = Convert.ToDouble(inputText);
+                            }
+                            catch (FormatException)
+                            {
+                                count = 0; // Use default value of 0 if conversion fails
+                            }
+
                             UserAppraisals.Delete(_userId, _year, coeId);
                             UserAppraisals userAppraisal = new UserAppraisals
                             {
