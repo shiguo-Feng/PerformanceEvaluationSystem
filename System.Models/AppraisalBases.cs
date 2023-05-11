@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Models;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,15 @@ namespace PerformanceEvaluationSystem.Models
                 list.Add(SqltoObj(row));
             }
             return list;
+        }
+        public static int Update(AppraisalBases appraisalBases)
+        {
+            return SqlHelper.ExecuteNonQuery("UPDATE AppraisalBases SET  BaseType = @BaseType, AppraisalBase = @AppraisalBase, IsDel = @Isdel Where Id = @Id",
+                new SqlParameter("@Id", appraisalBases.Id),
+                new SqlParameter("@BaseType", appraisalBases.BaseType),
+                new SqlParameter("@AppraisalBase", appraisalBases.AppraisalBase),
+                new SqlParameter("@IsDel", appraisalBases.IsDel)
+                );
         }
 
         private static AppraisalBases SqltoObj(DataRow row)

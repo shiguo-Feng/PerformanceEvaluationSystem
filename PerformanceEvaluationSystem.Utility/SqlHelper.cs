@@ -12,11 +12,12 @@ namespace PerformanceEvaluationSystem.Utility
     {
         public static string ConStr { get; set; }
 
-        public static DataTable ExecuteTable(string cmdText) {
+        public static DataTable ExecuteTable(string cmdText, params SqlParameter[] sqlParameters) {
             using (SqlConnection conn = new SqlConnection(ConStr))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.Parameters.AddRange(sqlParameters);
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 sda.Fill(ds);
@@ -32,7 +33,7 @@ namespace PerformanceEvaluationSystem.Utility
                 cmd.Parameters.AddRange(sqlParameters);
                 int rows = cmd.ExecuteNonQuery();
                 if (rows <= 0) {
-                    throw new Exception("Eror in Executing NonQuery");
+                   // throw new Exception("Eror in Executing NonQuery");
                 }
                 return rows;
             }

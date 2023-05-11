@@ -66,6 +66,12 @@
     <Compile Include="FormUserAppraisal.Designer.cs">
       <DependentUpon>FormUserAppraisal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUserAppraisalEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUserAppraisalEdit.Designer.cs">
+      <DependentUpon>FormUserAppraisalEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUserManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUserAppraisal.resx">
       <DependentUpon>FormUserAppraisal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUserAppraisalEdit.resx">
+      <DependentUpon>FormUserAppraisalEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUserManager.resx">
       <DependentUpon>FormUserManager.cs</DependentUpon>

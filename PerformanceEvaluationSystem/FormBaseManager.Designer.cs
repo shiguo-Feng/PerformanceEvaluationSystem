@@ -43,6 +43,7 @@
             this.dataGridViewBase.RowTemplate.Height = 23;
             this.dataGridViewBase.Size = new System.Drawing.Size(800, 450);
             this.dataGridViewBase.TabIndex = 0;
+            this.dataGridViewBase.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBase_CellValueChanged);
             // 
             // FormBaseManager
             // 

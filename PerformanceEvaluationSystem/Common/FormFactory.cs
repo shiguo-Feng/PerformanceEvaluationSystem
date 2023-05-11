@@ -46,6 +46,7 @@ namespace PerformanceEvaluationSystem.Common
 
         static FormFactory()
         {
+            // this only runs once at the time this class was initilized
             Assembly app = Assembly.LoadFrom("PerformanceEvaluationSystem.exe");
             _types = app.GetTypes().ToList();
         }

@@ -18,10 +18,16 @@ namespace PerformanceEvaluationSystem
         {
             InitializeComponent();
         }
-
+        Action actionBindDgv;
         private void FormUserAppraisal_Load(object sender, EventArgs e)
         {
             SetCol();
+            BindDgv();
+            actionBindDgv = BindDgv;
+        }
+
+        private void BindDgv()
+        {
             // dt has information for Users and Base
             DataTable dt = UserAppraisalBases.GetDataTable();
 
@@ -29,21 +35,21 @@ namespace PerformanceEvaluationSystem
             List<AppraisalCoefficients> appraisalCoefficients = AppraisalCoefficients.ListAll();
             foreach (var coefficients in appraisalCoefficients)
             {
-                dt.Columns.Add(new DataColumn { ColumnName = "AppraisalType" + coefficients.Id.ToString()});
-                dt.Columns.Add(new DataColumn { ColumnName = "AppraisalCoefficient" + coefficients.Id.ToString()});
+                dt.Columns.Add(new DataColumn { ColumnName = "AppraisalType" + coefficients.Id.ToString() });
+                dt.Columns.Add(new DataColumn { ColumnName = "AppraisalCoefficient" + coefficients.Id.ToString() });
                 dt.Columns.Add(new DataColumn { ColumnName = "CalculationMethod" + coefficients.Id.ToString() });
             }
             dt.Columns.Add(new DataColumn { ColumnName = "AssessmentYear" });
             dt.Columns.Add(new DataColumn { ColumnName = "YearBonus" });
 
             List<UserAppraisalCoefficients> userAppraisalCoefficients = UserAppraisalCoefficients.ListAll();
-            for (int i = 0;i<dt.Rows.Count; i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
                 //Get the matched id and year group
-                var filter =  userAppraisalCoefficients.FindAll(m => m.UserId == (int)dt.Rows[i]["Id"] && m.AssessmentYear == Convert.ToInt32(comboBoxYear.Text));
+                var filter = userAppraisalCoefficients.FindAll(m => m.UserId == (int)dt.Rows[i]["Id"] && m.AssessmentYear == Convert.ToInt32(comboBoxYear.Text));
                 //Array to stroe all coeffiecients * count * calculation method
                 double[] coes = new double[filter.Count];
-                for(int j = 0; j < filter.Count; j++)
+                for (int j = 0; j < filter.Count; j++)
                 {
                     // AppraisalType
                     string appraisalTypeKey = "AppraisalType" + filter[j].CoefficientId.ToString();
@@ -58,7 +64,7 @@ namespace PerformanceEvaluationSystem
                     int calculationMethodValue = filter[j].CalculationMethod;
 
                     // bind to dt
-                    dt.Rows[i][appraisalTypeKey] = appraisalTypeKey;
+                    dt.Rows[i][appraisalTypeKey] = appraisalTypeCountValue;
                     dt.Rows[i][appraisalCoefficientKey] = appraisalCoefficientValue;
                     dt.Rows[i][calculationMethodKey] = calculationMethodValue;
 
@@ -130,6 +136,32 @@ namespace PerformanceEvaluationSystem
                 ReadOnly = true,
                 Width = 80
             });
+        }
+
+        private void dataGViewUserAppraisal_MouseDown(object sender, MouseEventArgs e)
+        {
+            cmsEdit.Visible = false;
+        }
+
+        private void dataGViewUserAppraisal_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if(e.RowIndex > -1)
+                {
+                    dataGViewUserAppraisal.ClearSelection();
+                    dataGViewUserAppraisal.Rows[e.RowIndex].Selected = true;
+                }
+            }
+            cmsEdit.Visible = true;
+        }
+
+        private void cmsEdit_Click(object sender, EventArgs e)
+        {
+            int year = Convert.ToInt32 (comboBoxYear.Text);
+            int userId = (int) dataGViewUserAppraisal.SelectedRows[0].Cells["Id"].Value;
+            FormUserAppraisalEdit formUserAppraisalEdit = new FormUserAppraisalEdit(userId, year, actionBindDgv);
+            formUserAppraisalEdit.ShowDialog();
         }
     }
 }

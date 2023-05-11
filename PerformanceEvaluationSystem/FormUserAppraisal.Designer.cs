@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBoxYear = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,8 +38,11 @@
             this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BaseType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AppraisalBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStripUserAppraisal = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGViewUserAppraisal)).BeginInit();
+            this.contextMenuStripUserAppraisal.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -88,12 +92,17 @@
             this.Sex,
             this.BaseType,
             this.AppraisalBase});
+            this.dataGViewUserAppraisal.ContextMenuStrip = this.contextMenuStripUserAppraisal;
             this.dataGViewUserAppraisal.Location = new System.Drawing.Point(12, 118);
+            this.dataGViewUserAppraisal.MultiSelect = false;
             this.dataGViewUserAppraisal.Name = "dataGViewUserAppraisal";
             this.dataGViewUserAppraisal.ReadOnly = true;
             this.dataGViewUserAppraisal.RowTemplate.Height = 23;
+            this.dataGViewUserAppraisal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGViewUserAppraisal.Size = new System.Drawing.Size(776, 320);
             this.dataGViewUserAppraisal.TabIndex = 1;
+            this.dataGViewUserAppraisal.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGViewUserAppraisal_CellMouseDown);
+            this.dataGViewUserAppraisal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGViewUserAppraisal_MouseDown);
             // 
             // Id
             // 
@@ -130,6 +139,20 @@
             this.AppraisalBase.Name = "AppraisalBase";
             this.AppraisalBase.ReadOnly = true;
             // 
+            // contextMenuStripUserAppraisal
+            // 
+            this.contextMenuStripUserAppraisal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsEdit});
+            this.contextMenuStripUserAppraisal.Name = "contextMenuStripUserAppraisal";
+            this.contextMenuStripUserAppraisal.Size = new System.Drawing.Size(181, 48);
+            // 
+            // cmsEdit
+            // 
+            this.cmsEdit.Name = "cmsEdit";
+            this.cmsEdit.Size = new System.Drawing.Size(180, 22);
+            this.cmsEdit.Text = "Edit";
+            this.cmsEdit.Click += new System.EventHandler(this.cmsEdit_Click);
+            // 
             // FormUserAppraisal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -145,6 +168,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGViewUserAppraisal)).EndInit();
+            this.contextMenuStripUserAppraisal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -160,5 +184,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Sex;
         private System.Windows.Forms.DataGridViewTextBoxColumn BaseType;
         private System.Windows.Forms.DataGridViewTextBoxColumn AppraisalBase;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripUserAppraisal;
+        private System.Windows.Forms.ToolStripMenuItem cmsEdit;
     }
 }

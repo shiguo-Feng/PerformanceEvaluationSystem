@@ -23,5 +23,11 @@ namespace PerformanceEvaluationSystem
             dataGridViewBase.DataSource = AppraisalBases.ListAll();
 
         }
+
+        private void dataGridViewBase_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            AppraisalBases appraisalBases = (AppraisalBases) dataGridViewBase.Rows[e.RowIndex].DataBoundItem;
+            AppraisalBases.Update(appraisalBases);
+        }
     }
 }
