@@ -37,11 +37,6 @@
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cmsUserManager = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuReturn = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuSuspend = new System.Windows.Forms.ToolStripMenuItem();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +44,11 @@
             this.baseTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AppraisalBase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Suspended = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cmsUserManager = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuReturn = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuSuspend = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.cmsUserManager.SuspendLayout();
@@ -66,15 +66,15 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(837, 100);
+            this.groupBox1.Size = new System.Drawing.Size(774, 100);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select User";
             // 
             // btnSearch
             // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(718, 40);
+            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSearch.Location = new System.Drawing.Point(630, 43);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 5;
@@ -85,7 +85,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(503, 43);
+            this.checkBox1.Location = new System.Drawing.Point(467, 45);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(78, 16);
             this.checkBox1.TabIndex = 4;
@@ -95,7 +95,7 @@
             // comboBoxBase
             // 
             this.comboBoxBase.FormattingEnabled = true;
-            this.comboBoxBase.Location = new System.Drawing.Point(324, 43);
+            this.comboBoxBase.Location = new System.Drawing.Point(308, 44);
             this.comboBoxBase.Name = "comboBoxBase";
             this.comboBoxBase.Size = new System.Drawing.Size(121, 20);
             this.comboBoxBase.TabIndex = 3;
@@ -104,7 +104,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(246, 43);
+            this.label2.Location = new System.Drawing.Point(231, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 16);
             this.label2.TabIndex = 2;
@@ -131,8 +131,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -144,52 +143,16 @@
             this.AppraisalBase,
             this.Suspended});
             this.dataGridView1.ContextMenuStrip = this.cmsUserManager;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 118);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 102);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(840, 399);
+            this.dataGridView1.Size = new System.Drawing.Size(777, 399);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
-            // 
-            // cmsUserManager
-            // 
-            this.cmsUserManager.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuAdd,
-            this.toolStripMenuEdit,
-            this.toolStripMenuReturn,
-            this.toolStripMenuSuspend});
-            this.cmsUserManager.Name = "cmsUserManager";
-            this.cmsUserManager.Size = new System.Drawing.Size(169, 92);
-            // 
-            // toolStripMenuAdd
-            // 
-            this.toolStripMenuAdd.Name = "toolStripMenuAdd";
-            this.toolStripMenuAdd.Size = new System.Drawing.Size(168, 22);
-            this.toolStripMenuAdd.Text = "Add";
-            this.toolStripMenuAdd.Click += new System.EventHandler(this.toolStripMenuAdd_Click);
-            // 
-            // toolStripMenuEdit
-            // 
-            this.toolStripMenuEdit.Name = "toolStripMenuEdit";
-            this.toolStripMenuEdit.Size = new System.Drawing.Size(168, 22);
-            this.toolStripMenuEdit.Text = "Edit";
-            this.toolStripMenuEdit.Click += new System.EventHandler(this.toolStripMenuEdit_Click);
-            // 
-            // toolStripMenuReturn
-            // 
-            this.toolStripMenuReturn.Name = "toolStripMenuReturn";
-            this.toolStripMenuReturn.Size = new System.Drawing.Size(168, 22);
-            this.toolStripMenuReturn.Text = "Return Working";
-            // 
-            // toolStripMenuSuspend
-            // 
-            this.toolStripMenuSuspend.Name = "toolStripMenuSuspend";
-            this.toolStripMenuSuspend.Size = new System.Drawing.Size(168, 22);
-            this.toolStripMenuSuspend.Text = "Suspend";
             // 
             // Id
             // 
@@ -242,11 +205,49 @@
             this.Suspended.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Suspended.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // cmsUserManager
+            // 
+            this.cmsUserManager.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuAdd,
+            this.toolStripMenuEdit,
+            this.toolStripMenuReturn,
+            this.toolStripMenuSuspend});
+            this.cmsUserManager.Name = "cmsUserManager";
+            this.cmsUserManager.Size = new System.Drawing.Size(181, 114);
+            // 
+            // toolStripMenuAdd
+            // 
+            this.toolStripMenuAdd.Name = "toolStripMenuAdd";
+            this.toolStripMenuAdd.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuAdd.Text = "Add";
+            this.toolStripMenuAdd.Click += new System.EventHandler(this.toolStripMenuAdd_Click);
+            // 
+            // toolStripMenuEdit
+            // 
+            this.toolStripMenuEdit.Name = "toolStripMenuEdit";
+            this.toolStripMenuEdit.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuEdit.Text = "Edit";
+            this.toolStripMenuEdit.Click += new System.EventHandler(this.toolStripMenuEdit_Click);
+            // 
+            // toolStripMenuReturn
+            // 
+            this.toolStripMenuReturn.Name = "toolStripMenuReturn";
+            this.toolStripMenuReturn.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuReturn.Text = "Return Working";
+            this.toolStripMenuReturn.Click += new System.EventHandler(this.toolStripMenuReturn_Click);
+            // 
+            // toolStripMenuSuspend
+            // 
+            this.toolStripMenuSuspend.Name = "toolStripMenuSuspend";
+            this.toolStripMenuSuspend.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuSuspend.Text = "Suspend";
+            this.toolStripMenuSuspend.Click += new System.EventHandler(this.toolStripMenuSuspend_Click);
+            // 
             // FormUserManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 529);
+            this.ClientSize = new System.Drawing.Size(798, 513);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

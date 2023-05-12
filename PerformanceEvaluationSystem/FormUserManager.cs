@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Models;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,8 @@ namespace PerformanceEvaluationSystem
     public delegate void BindDataGViewDelegate();
     public partial class FormUserManager : Form
     {
-        BindDataGViewDelegate bindDataViewDelegate; 
+        BindDataGViewDelegate bindDataViewDelegate;
+        private Users _user;
 
         public FormUserManager()
         {
@@ -117,7 +119,24 @@ namespace PerformanceEvaluationSystem
 
             }
         }
+        private void toolStripMenuReturn_Click(object sender, EventArgs e)
+        {
+            flipIsDel();
+        }
 
+        private void toolStripMenuSuspend_Click(object sender, EventArgs e)
+        {
+            flipIsDel();
+        }
+
+        private void flipIsDel()
+        {
+            int userId = (int)dataGridView1.SelectedRows[0].Cells["Id"].Value;
+            _user = Users.ListAll().Find(m => m.Id == userId);
+            _user.IsDel = !_user.IsDel;
+            Users.Update(_user);
+            BindDataGView();
+        }
 
     }
 }
