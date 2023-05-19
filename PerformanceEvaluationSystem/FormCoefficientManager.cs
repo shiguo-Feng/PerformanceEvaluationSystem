@@ -22,6 +22,12 @@ namespace PerformanceEvaluationSystem
         private void FormCoefficientManager_Load(object sender, EventArgs e)
         {
             dataGridViewCoeManager.DataSource = AppraisalCoefficients.ListAll();
+
+            // hide the IsDel column
+            if (dataGridViewCoeManager.Columns.Contains("IsDel"))
+            {
+                dataGridViewCoeManager.Columns["IsDel"].Visible = false;
+            }
         }
 
         private void dataGridViewCoeManager_CellValueChanged(object sender, DataGridViewCellEventArgs e)

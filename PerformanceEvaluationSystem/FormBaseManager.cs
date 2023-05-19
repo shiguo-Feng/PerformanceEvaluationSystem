@@ -22,6 +22,7 @@ namespace PerformanceEvaluationSystem
         {
             dataGridViewBase.DataSource = AppraisalBases.ListAll();
 
+            if (dataGridViewBase.Columns.Contains("IsDel")) dataGridViewBase.Columns["IsDel"].Visible = false;
         }
 
         private void dataGridViewBase_CellValueChanged(object sender, DataGridViewCellEventArgs e)
