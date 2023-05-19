@@ -24,12 +24,13 @@ namespace PerformanceEvaluationSystem
         }
         public FormSetUser(BindDataGViewDelegate bindDataGViewDelegate, int userId):this(bindDataGViewDelegate)
         {
-            // Used formSetUser with one input first method first
+            // Call formSetUser (above) first
             _user = Users.ListAll().Find(m => m.Id == userId);
         }
 
         private void FormSetUser_Load(object sender, EventArgs e)
         {
+            //get the AppraisalBases List
             List<AppraisalBases> appraisalBasesList = new List<AppraisalBases>();
             appraisalBasesList = AppraisalBases.ListAll();
             comboBoxPosition.DataSource = appraisalBasesList;
@@ -52,6 +53,7 @@ namespace PerformanceEvaluationSystem
             bool isSuspend = checkBoxIsSuspend.Checked;
             if (_user == null)
             {
+                //creating a new user
                 Users user = new Users
                 {
                     UserName = userName,
@@ -65,6 +67,7 @@ namespace PerformanceEvaluationSystem
             }
             else
             {
+                //editing
                 _user.UserName = userName;
                 _user.BaseTypeId = baseTypeId;
                 _user.Password = "111";
@@ -73,7 +76,7 @@ namespace PerformanceEvaluationSystem
                 Users.Update(_user);
                 MessageBox.Show("Successfully Edited user!");
             }
-            _bindDataGViewDelegate();
+            _bindDataGViewDelegate(); // update ui
             this.Close();
         }
     }

@@ -22,6 +22,7 @@ namespace PerformanceEvaluationSystem
         {
             dataGridViewBase.DataSource = AppraisalBases.ListAll();
 
+            // hide the IsDel column
             if (dataGridViewBase.Columns.Contains("IsDel")) dataGridViewBase.Columns["IsDel"].Visible = false;
         }
 
